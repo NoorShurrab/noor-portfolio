@@ -1,0 +1,121 @@
+.slider {
+    position: relative;
+    padding: 16px 0 44px;
+}
+
+.stage {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 24px;
+    padding: 0 60px;
+    animation: fade 0.4s ease;
+}
+
+@keyframes fade {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+.screen {
+    width: 100%;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.35) transparent;
+}
+
+.screen::-webkit-scrollbar { width: 6px; }
+.screen::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.35);
+    border-radius: 3px;
+}
+
+.screen img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: initial;
+}
+
+.screenLaptop { height: 624px; }
+.screenTablet { height: 683px; }
+.screenPhone  { height: 874px; }
+
+/* 'zoom' reduces the actual size, so there is no overlap */
+.laptop { zoom: 0.5; }
+.tablet { zoom: 0.4; }
+.phone  { zoom: 0.4; }
+
+.btn {
+    position: absolute;
+    top: 45%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    font-size: 1.6rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn:hover { background: rgb(215, 20, 156); }
+.prev { left: 12px; }
+.next { right: 12px; }
+
+.prev svg { transform: translateX(-1px); }
+.next svg { transform: translateX(1px); }
+
+.dots {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+}
+
+.activeDot { background: rgb(215, 20, 156); }
+
+@media (max-width: 900px) {
+.stage { padding: 0 60px; gap: 12px; }
+.laptop { zoom: 0.3; }
+.tablet { zoom: 0.22; }
+.phone  { zoom: 0.22; }
+}
+
+@media (max-width: 600px) {
+.slider { padding-bottom: 64px; }
+
+.stage { padding: 0 8px; gap: 8px; }
+.laptop { zoom: 0.12; }
+.tablet { zoom: 0.12; }
+.phone  { zoom: 0.12; }
+
+.btn {
+    top: auto;
+    bottom: 0;
+    transform: none;
+    width: 36px;
+    height: 36px;
+    font-size: 1.3rem;
+}
+
+.prev { left: calc(50% - 70px); }
+.next { right: calc(50% - 70px); }
+.dots { bottom: 13px; }
+}

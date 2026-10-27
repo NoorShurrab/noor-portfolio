@@ -1,0 +1,40 @@
+.wrapper {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(211, 77, 187, 0.35), transparent 45%),
+    radial-gradient(circle at 88% 12%, rgba(68, 162, 229, 0.4), transparent 50%),
+    radial-gradient(circle at 75% 92%, rgba(63, 81, 181, 0.3), transparent 50%),
+    linear-gradient(135deg, #e6e0ff 0%, #d6e9ff 50%, #f6dcf3 100%);
+  animation: fadeIn 0.8s ease-out;
+}
+
+.wrapper canvas {
+  opacity: 0.9;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.18) 0%,
+    rgba(0, 0, 0, 0.18) 40%,
+    #000 65%
+  );
+  mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.18) 0%,
+    rgba(0, 0, 0, 0.18) 40%,
+    #000 65%
+  );
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .wrapper canvas {
+    opacity: 0.4;
+  }
+}

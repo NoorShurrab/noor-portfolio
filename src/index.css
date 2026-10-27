@@ -1,0 +1,40 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --page-bg:
+    radial-gradient(circle at 12% 18%, rgba(211, 77, 187, 0.35), transparent 45%),
+    radial-gradient(circle at 88% 12%, rgba(68, 162, 229, 0.4), transparent 50%),
+    radial-gradient(circle at 75% 92%, rgba(63, 81, 181, 0.3), transparent 50%),
+    linear-gradient(135deg, #e6e0ff 0%, #d6e9ff 50%, #f6dcf3 100%);
+}
+@font-face {
+  font-family: 'Pacifico';
+  src: url('./assets/Pacifico-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Roboto';
+  src: url('./assets/Roboto-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'GreatVibes';
+  src: url('./assets/GreatVibes-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'PlusJakartaSans-ExtraBold';
+  src: url('./assets/PlusJakartaSans-ExtraBold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'PlusJakartaSans-Regular';
+  src: url('./assets/PlusJakartaSans-Regular.ttf') format('truetype');
+}
+a {
+  text-decoration: none;
+}
+ul {
+  list-style: none;
+  margin: 0;
+  padding:0;
+}

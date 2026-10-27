@@ -1,0 +1,214 @@
+.contact {
+    --navy: #2d3652;
+    --pink: rgb(215, 20, 156);
+    --blue: rgb(42, 115, 233);
+    --wave-h: clamp(120px, 20vh, 190px);
+
+    box-sizing: border-box;
+    position: relative;
+    min-height: 100%;
+    padding: 2vh 20px calc(var(--wave-h) + 2vh);
+}
+
+.container {
+    position: relative;
+    z-index: 2;
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+.title {
+    font-size: clamp(1.8rem, 6vh, 3.6rem);
+    color: var(--navy);
+    margin: 0 0 1vh;
+    font-family: 'PlusJakartaSans-ExtraBold';
+}
+
+.dot {
+    display: inline-block;
+    width: 0.25em;
+    height: 0.25em;
+    margin-left: 4px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--blue), var(--pink));
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+}
+
+.form input,
+.form textarea {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 14px;
+    border: 2px solid transparent;
+    border-radius: 6px;
+    background: var(--navy);
+    color: #fff;
+    font-size: clamp(0.85rem, 1.8vh, 1.05rem);
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.form input {
+    height: clamp(40px, 7vh, 64px);
+}
+
+.form textarea {
+    height: clamp(70px, 15vh, 180px);
+    padding-top: 12px;
+    resize: none;
+}
+
+.form input::placeholder,
+.form textarea::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+    font-family: 'Roboto';
+}
+
+.form input:focus,
+.form textarea:focus {
+    border-color: var(--blue);
+}
+
+.form button {
+    align-self: flex-end;
+    width: 33%;
+    min-width: 140px;
+    height: clamp(40px, 7vh, 60px);
+    padding: 0;
+    border: none;
+    border-radius: 6px;
+    background: linear-gradient(90deg, var(--blue), var(--pink));
+    color: #fff;
+    font-size: clamp(0.9rem, 1.9vh, 1.05rem);
+    font-weight: bold;
+    font-family: 'Roboto';
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.form button:hover {
+    opacity: 0.85;
+}
+
+/* ===== Wave strip (at the bottom of the screen) ===== */
+.shape {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: var(--wave-h);
+    z-index: 1;
+    overflow: hidden;
+    pointer-events: none;
+    animation: rise 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.wave {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 60%;
+}
+
+.waveBack  { animation: slide 14s linear infinite; }
+.waveFront { animation: slide 9s linear infinite reverse; }
+
+@keyframes rise {
+    from { transform: translateY(100%); opacity: 0; }
+    to   { transform: translateY(0);    opacity: 1; }
+}
+
+@keyframes slide {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+}
+
+/* ===== Icons (inside the wave) ===== */
+.icon {
+    position: absolute;
+    top: 74%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--navy);
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    opacity: 0;
+    animation: pop 0.5s ease forwards;
+    transition: color 0.2s, scale 0.2s;
+    pointer-events: auto;
+}
+
+.icon:hover {
+    color: #ff7ad9;
+    scale: 1.2;
+}
+@keyframes pop {
+    from { opacity: 0; margin-top: 20px; }
+    to   { opacity: 1; margin-top: 0; }
+}
+
+.left   { left: 30%; animation-delay: 0.8s; }
+.center { left: 50%; animation-delay: 1s; }
+.right  { left: 70%; animation-delay: 1.2s; }
+
+
+@media (max-width: 600px) {
+    .form button { width: 100%; }
+}
+
+.message {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 16px;
+    padding: 14px 18px;
+    border-radius: 8px;
+    background: #2d3652;           
+    color: #fff;
+    font-family: 'Roboto';
+    font-size: 1rem;
+    font-weight: 500;
+    box-shadow: 0 6px 18px rgba(45, 54, 82, 0.25);
+    animation: fadeInOut 4s ease forwards;
+}
+
+/*The circular icon before the text*/
+.message::before {
+    flex-shrink: 0;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #fff;
+}
+.success {
+    border-left: 4px solid rgb(42, 115, 233);
+}
+.success::before {
+    content: '✓';
+    background: rgb(42, 115, 233);
+}
+.failure {
+    border-left: 4px solid rgb(215, 20, 156);
+}
+.failure::before {
+    content: '!';
+    background: rgb(215, 20, 156);
+}
+
+@keyframes fadeInOut {
+    0%   { opacity: 0; transform: translateY(-8px); }
+    10%  { opacity: 1; transform: translateY(0); }
+    80%  { opacity: 1; }
+    100% { opacity: 0; }
+}

@@ -1,0 +1,98 @@
+/* The Stage: Background + 3D Depth */
+.stage {
+    height: 100vh;
+    overflow: hidden;
+    perspective: 1800px;
+    background: #0b0b2b url('/space.jpg') center / cover;
+}
+
+/* The white page that keeps loading */
+.page {
+    height: 100%;
+    background: var(--page-bg);
+    overflow-y: auto;
+}
+
+.out {
+    animation: out 0.6s ease-in forwards;
+}
+
+.in {
+    animation: in 0.6s ease-out both;
+}
+
+@keyframes out {
+    to {
+        transform: rotateY(calc(var(--dir) * -90deg));
+    }
+}
+
+@keyframes in {
+    from {
+        transform: rotateY(calc(var(--dir) * 90deg));
+    }
+}
+.content {
+    opacity: 0;
+    padding: 100px 5% 40px;
+    transition: opacity 0.4s;
+}
+
+.idle .content {
+    opacity: 1;
+}
+
+.arrow {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid #2d3748;
+    background: transparent;
+    color: #2d3748;
+    font-size: 1.8rem;
+    cursor: pointer;
+    transition: color 0.3s, border-color 0.3s;
+}
+
+.arrow:hover:not(:disabled) {
+    color: rgb(215, 20, 156);
+    border-color: rgb(42, 115, 233);
+}
+
+.arrow:disabled {
+    opacity: 0.4;
+    cursor: default;
+}
+
+.left {
+    left: 30px;
+}
+
+.rightArrow {
+    right: 30px;
+}
+
+@media (max-width: 768px) {
+.arrow {
+    top: 115px;                        
+    width: 44px;
+    height: 44px;
+    font-size: 1.3rem;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.left {
+left: 20px;
+}
+
+.rightArrow {
+right: 20px;
+}
+}
