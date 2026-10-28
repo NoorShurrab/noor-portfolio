@@ -3,6 +3,9 @@ import { MockFrame } from 'react-mockframe';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import styles from './ImageSlider.module.css';
 
+const withBase = (path) =>
+    `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`;
+
 const ImageSlider = ({ slides, title }) => {
     const [index, setIndex] = useState(0);
     const slide = slides[index];
@@ -17,7 +20,7 @@ const ImageSlider = ({ slides, title }) => {
                     <div className={styles.laptop}>
                         <MockFrame device="MacBook Pro" color="space-black">
                             <div className={`${styles.screen} ${styles.screenLaptop}`}>
-                                <img src={slide.laptop} alt={`${title} on laptop`} />
+                                <img src={withBase(slide.laptop)} alt={`${title} on laptop`} />
                             </div>
                         </MockFrame>
                     </div>
@@ -27,7 +30,7 @@ const ImageSlider = ({ slides, title }) => {
                     <div className={styles.tablet}>
                         <MockFrame device="iPad Pro" color="space-black">
                             <div className={`${styles.screen} ${styles.screenTablet}`}>
-                                <img src={slide.tablet} alt={`${title} on tablet`} />
+                                <img src={withBase(slide.tablet)} alt={`${title} on tablet`} />
                             </div>
                         </MockFrame>
                     </div>
@@ -37,7 +40,7 @@ const ImageSlider = ({ slides, title }) => {
                     <div className={styles.phone}>
                         <MockFrame device="iPhone 17" color="space-black">
                             <div className={`${styles.screen} ${styles.screenPhone}`}>
-                                <img src={slide.phone} alt={`${title} on phone`} />
+                                <img src={withBase(slide.phone)} alt={`${title} on phone`} />
                             </div>
                         </MockFrame>
                     </div>

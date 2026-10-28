@@ -3,7 +3,7 @@
     height: 100vh;
     overflow: hidden;
     perspective: 1800px;
-    background: #0b0b2b url('/space.jpg') center / cover;
+    background: #0b0b2b;
 }
 
 /* The white page that keeps loading */
