@@ -7,7 +7,7 @@ My personal portfolio website built with
 - page transitions and a contact form (react-hook-form + Web3Forms).
 
 
-### Live on GitHub Pages: [add your link here]
+### Live on GitHub Pages:  [Noor's Portfolio](https://noorshurrab.github.io/noor-portfolio/)
 
 ## Run locally
 ```bash
