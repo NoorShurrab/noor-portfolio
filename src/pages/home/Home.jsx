@@ -38,7 +38,7 @@ const Home = ({ ready }) => {
                 Contact Me
             </Link>
             <a
-                href="https://docs.google.com/document/d/15uEVIN8Hn-h4QHAB6m8LCE-Rk6h6OWBI3waTdgKAMAY/edit?usp=sharing"
+                href={`${import.meta.env.BASE_URL}Noor Shurrab CV.pdf`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`${styles.btn} ${styles.outline}`}

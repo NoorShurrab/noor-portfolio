@@ -19,16 +19,16 @@
   src: url('./assets/Roboto-Regular.ttf') format('truetype');
 }
 @font-face {
-  font-family: 'GreatVibes';
-  src: url('./assets/GreatVibes-Regular.ttf') format('truetype');
-}
-@font-face {
   font-family: 'PlusJakartaSans-ExtraBold';
   src: url('./assets/PlusJakartaSans-ExtraBold.ttf') format('truetype');
 }
 @font-face {
   font-family: 'PlusJakartaSans-Regular';
   src: url('./assets/PlusJakartaSans-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Italianno';
+  src: url('./assets/Italianno-Regular.ttf')
 }
 a {
   text-decoration: none;

@@ -32,9 +32,3 @@
     opacity: 0;
   }
 }
-
-@media (max-width: 768px) {
-  .wrapper canvas {
-    opacity: 0.4;
-  }
-}

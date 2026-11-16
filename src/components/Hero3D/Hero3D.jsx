@@ -1,20 +1,26 @@
-import { Canvas } from '@react-three/fiber';
+import { Canvas, useThree } from '@react-three/fiber';
 import { Float, MeshDistortMaterial } from '@react-three/drei';
 import styles from './Hero3D.module.css';
 
-
 const shapes = [
-  { type: 'sphere', pos: [5.5, 0.4, -1], size: 2.1, color: '#44a2e5', distort: true, speed: 2 },
+  { type: 'sphere', pos: [5.5, 0.4, -1], size: 2.1, color: '#44a2e5', distort: true, speed: 2 ,
+    mobile: { pos: [1.5, -4.8, -1], size: 0.9 },
+  },
   { type: 'torus', pos: [2.8, 3.3, -2], size: 0.9, color: '#d34dbb', speed: 3 },
   { type: 'octa', pos: [3.6, -3.3, -1], size: 0.9, color: '#1c1042', speed: 2.5 },
   { type: 'icosa', pos: [-6.8, 3.4, -3], size: 0.8, color: '#3f51b5', wire: true, speed: 2 },
   { type: 'sphere', pos: [-3.2, -3.6, -2], size: 0.5, color: '#d34dbb', speed: 3 },
   { type: 'knot', pos: [-0.5, 3.8, -3], size: 0.6, color: '#44a2e5', speed: 2 },
-{ type: 'torus', pos: [-6.5, -5, -4], size: 0.7, color: '#44a2e5', speed: 1.5 },
+  { type: 'torus', pos: [-6.5, -5, -4], size: 0.7, color: '#44a2e5', speed: 1.5 },
   { type: 'octa', pos: [0.8, -3.9, -3], size: 0.5, color: '#d34dbb', wire: true, speed: 2.5 },
   { type: 'sphere', pos: [7.2, 3.6, -3], size: 0.6, color: '#3f51b5', speed: 2 },
-  { type: 'icosa', pos: [7.4, -3.2, -2], size: 0.55, color: '#44a2e5', speed: 3 },
+  { type: 'icosa', pos: [7.4, -3.2, -2], size: 0.55, color: '#44a2e5', speed: 3,
+    mobile: { pos: [1.7, 2.3, -2], size: 0.3 },
+  },
 ];
+
+// The screen aspect ratio used for the design (width ÷ height)
+const DESIGN_ASPECT = 1.9;
 
 function Geometry({ type }) {
   switch (type) {
@@ -57,17 +63,36 @@ function Shape({ type, pos, size, color, distort, wire, speed }) {
   );
 }
 
+function Scene() {
+  const { size } = useThree();
+  const aspect = size.width / size.height;
+
+  const isMobile = aspect < 0.8;
+  const xFactor = Math.min(1, aspect / DESIGN_ASPECT);
+  const sizeFactor = Math.min(1, Math.max(0.5, xFactor * 2));
+
+  return (
+    <>
+      <ambientLight intensity={0.9} />
+      <directionalLight position={[4, 5, 6]} intensity={1.8} />
+      {shapes.map((s, i) => {
+        const m = isMobile && s.mobile;
+        const pos = m ? m.pos : [s.pos[0] * xFactor, s.pos[1], s.pos[2]];
+        const finalSize = m ? m.size : s.size * sizeFactor;
+
+        return <Shape key={i} {...s} pos={pos} size={finalSize} />;
+      })}
+    </>
+  );
+}
+
 const Hero3D = () => {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return null;
 
   return (
     <div className={styles.wrapper} aria-hidden="true">
       <Canvas camera={{ position: [0, 0, 10], fov: 50 }} dpr={[1, 2]}>
-        <ambientLight intensity={0.9} />
-        <directionalLight position={[4, 5, 6]} intensity={1.8} />
-        {shapes.map((s, i) => (
-          <Shape key={i} {...s} />
-        ))}
+        <Scene />
       </Canvas>
     </div>
   );

@@ -33,7 +33,7 @@
     max-width: none;           
     margin: 0 0 24px;
     color: #cfd5e6;
-    font-size: clamp(0.7rem, 1.1vw, 0.95rem);
+    font-size: clamp(0.9rem, 1.1vw, 0.95rem);
     line-height: 1.2;
     font-family: 'PlusJakartaSans-Regular';
     text-wrap: wrap;

@@ -10,7 +10,7 @@ const Header = ({ locked }) => {
         <header className={`${styles.header} ${locked ? styles.locked : ''}`}>
             <div className={styles.logo}>
                 <Link to="/" onClick={() => setOpen(false)}>
-                    <h1>Portfolio</h1>
+                    <h1>Noor Shurrab</h1>
                 </Link>
             </div>
 

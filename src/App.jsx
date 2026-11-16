@@ -61,7 +61,7 @@ function App() {
         </div>
       </section>
 
-      {index > 0 && (
+      {/* {index > 0 && (
         <button
           className={`${styles.arrow} ${styles.left}`}
           disabled={busy}
@@ -81,7 +81,7 @@ function App() {
         >
           <FiArrowRight />
         </button>
-      )}
+      )} */}
     </div>
   );
 }

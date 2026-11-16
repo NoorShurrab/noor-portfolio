@@ -17,8 +17,8 @@ position: relative;
 
 .name {
   display: inline-block;
-  font-family: 'GreatVibes', cursive;
-  font-size: 1.1em;
+  font-family: 'Italianno', cursive;
+  font-size: 1.5em;
   font-weight: 400;
   padding-right: 0.15em;
   background: linear-gradient(to right, rgb(63, 81, 181), rgb(68, 162, 229));
